@@ -471,19 +471,41 @@ class UIController {
     setupMobileMenu() {
         const toggle = document.querySelector('.mobile-menu-toggle');
         const nav = document.querySelector('.main-nav');
+        const overlay = document.getElementById('navOverlay');
 
         if (toggle && nav) {
-            toggle.addEventListener('click', () => {
+            const toggleMenu = () => {
                 toggle.classList.toggle('active');
                 nav.classList.toggle('active');
-            });
+                if (overlay) {
+                    overlay.classList.toggle('active');
+                }
+                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+            };
+
+            toggle.addEventListener('click', toggleMenu);
+
+            if (overlay) {
+                overlay.addEventListener('click', toggleMenu);
+            }
 
             // 点击导航链接后关闭菜单
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
                     toggle.classList.remove('active');
                     nav.classList.remove('active');
+                    if (overlay) {
+                        overlay.classList.remove('active');
+                    }
+                    document.body.style.overflow = '';
                 });
+            });
+
+            // ESC键关闭菜单
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && nav.classList.contains('active')) {
+                    toggleMenu();
+                }
             });
         }
     }
