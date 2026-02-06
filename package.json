@@ -1,0 +1,16 @@
+{
+  "name": "lab-website",
+  "version": "1.0.0",
+  "description": "电力数据智能分析与可视化团队网站",
+  "scripts": {
+    "generate-index": "node scripts/generate-index.mjs",
+    "serve": "serve .",
+    "start": "serve ."
+  },
+  "keywords": ["lab", "website", "research"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}

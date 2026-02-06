@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电力数据智能分析与可视化团队</title>
+    <meta name="description" content="电力数据智能分析与可视化团队 - 专注于电力大数据分析、智能算法研究与可视化技术创新">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 背景效果 - 有机自然 -->
+    <div class="organic-bg">
+        <div class="organic-shape"></div>
+        <div class="organic-shape"></div>
+        <div class="organic-shape"></div>
+    </div>
+
+    <!-- 顶部导航栏 -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10L90 30V70L50 90L10 70V30L50 10Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M50 25L75 37.5V62.5L50 75L25 62.5V37.5L50 25Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        <circle cx="50" cy="50" r="8" fill="currentColor"/>
+                        <line x1="50" y1="10" x2="50" y2="25" stroke="currentColor" stroke-width="1"/>
+                        <line x1="90" y1="30" x2="75" y2="37.5" stroke="currentColor" stroke-width="1"/>
+                        <line x1="90" y1="70" x2="75" y2="62.5" stroke="currentColor" stroke-width="1"/>
+                        <line x1="50" y1="90" x2="50" y2="75" stroke="currentColor" stroke-width="1"/>
+                        <line x1="10" y1="70" x2="25" y2="62.5" stroke="currentColor" stroke-width="1"/>
+                        <line x1="10" y1="30" x2="25" y2="37.5" stroke="currentColor" stroke-width="1"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1 class="logo-title">电力数据智能分析与可视化团队</h1>
+                    <p class="logo-subtitle">Power Data Intelligence & Visualization Lab</p>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active" data-page="home">首页</a></li>
+                    <li><a href="#about" class="nav-link" data-page="about">团队介绍</a></li>
+                    <li><a href="#research" class="nav-link" data-page="research">研究成果</a></li>
+                    <li><a href="#team" class="nav-link" data-page="team">团队成员</a></li>
+                    <li><a href="#publications" class="nav-link" data-page="publications">期刊论文</a></li>
+                    <li><a href="#news" class="nav-link" data-page="news">新闻资讯</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="contact">联系我们</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <button class="search-toggle" id="searchToggle" aria-label="Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- 搜索模态框 -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-overlay" id="searchOverlay"></div>
+        <div class="search-container">
+            <div class="search-header">
+                <h2>搜索文章</h2>
+                <button class="search-close" id="searchClose" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="search-input-wrapper">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="searchInput" placeholder="搜索研究成果、新闻资讯..." autocomplete="off">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+            <div class="search-hints">
+                <span class="shortcut-key">/</span> 快捷键打开搜索
+            </div>
+        </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 首页 -->
+        <section id="home" class="page-section active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span class="badge-text">AI & SMART GRID SECURITY</span>
+                    </div>
+                    <h2 class="hero-title">
+                        <span class="title-line">电力数据</span>
+                        <span class="title-line highlight">智能分析与可视化</span>
+                    </h2>
+                    <p class="hero-description">
+                        专注于电力系统高等级安防、以人为中心的视觉计算、电网立体感知计算以及基于深度神经网络的电力设备故障诊断。
+                    </p>
+                    
+                    <div class="hero-actions">
+                        <a href="#about" class="btn btn-primary">了解研究方向</a>
+                        <a href="#publications" class="btn btn-secondary">查看学术成果</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <!-- 核心技术关键词展示 -->
+                    <div class="tech-keywords-card">
+                        <div class="tech-item">
+                            <span class="tech-icon">👁️</span>
+                            <span class="tech-text">虹膜高等级安防</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">🧠</span>
+                            <span class="tech-text">人体姿态估计</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">🚁</span>
+                            <span class="tech-text">三维立体感知</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">🔍</span>
+                            <span class="tech-text">设备故障诊断</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">🌐</span>
+                            <span class="tech-text">边缘计算</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 实验室数据统计 -->
+            <div class="stats-section">
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">高水平论文</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">国家级课题</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">20+</span>
+                    <span class="stat-label">发明专利</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">省部级奖励</span>
+                </div>
+            </div>
+
+            <!-- 研究方向预览 -->
+            <div class="research-preview">
+                <div class="section-header">
+                    <h3 class="section-title">核心研究方向</h3>
+                    <a href="#research" class="view-more-link">
+                        了解更多
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="preview-grid">
+                    <div class="preview-card">
+                        <div class="card-icon">👁️</div>
+                        <h4 class="card-title">电力安防技术</h4>
+                        <p class="card-desc">以虹膜识别技术为核心的电力系统高等级安防技术开发，以虹膜为秘钥的高等级加密技术。</p>
+                    </div>
+                    <div class="preview-card">
+                        <div class="card-icon">👥</div>
+                        <h4 class="card-title">视觉计算</h4>
+                        <p class="card-desc">以人为中心的视觉计算，包括人体姿态估计、姿势识别、群体运动感知、情感计算等。</p>
+                    </div>
+                    <div class="preview-card">
+                        <div class="card-icon">🚁</div>
+                        <h4 class="card-title">立体感知计算</h4>
+                        <p class="card-desc">以电网三维场景为目标，应用于飞行机器人巡检自主导航、避障及高精度三维GIS开发。</p>
+                    </div>
+                    <div class="preview-card">
+                        <div class="card-icon">⚡</div>
+                        <h4 class="card-title">故障诊断</h4>
+                        <p class="card-desc">基于深度神经网络的电力设备检测及故障诊断技术。</p>
+                    </div>
+                    <div class="preview-card">
+                        <div class="card-icon">💻</div>
+                        <h4 class="card-title">前沿视觉技术</h4>
+                        <p class="card-desc">高精度视觉导航、图像哈希、图像隐写及视觉缺陷检测边缘计算技术。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 最新动态预览 -->
+            <div class="home-news-section">
+                <div class="section-header">
+                    <h3 class="section-title">最新动态</h3>
+                    <a href="#news" class="view-more-link">
+                        查看全部
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="home-news-grid" id="home-news-preview">
+                    <!-- 动态加载 -->
+                </div>
+            </div>
+
+            <!-- 合作伙伴 -->
+            <div class="partners-section">
+                <h3 class="section-title" style="margin-bottom: 2rem; font-size: 1.5rem; text-align: center;">合作伙伴 & 合作机构</h3>
+                <div class="partners-grid">
+                    <div class="partner-item"><span class="partner-icon">⚡</span> 国家电网</div>
+                    <div class="partner-item"><span class="partner-icon">🔋</span> 南方电网</div>
+                    <div class="partner-item"><span class="partner-icon">🔬</span> 中国电力科学研究院</div>
+                    <div class="partner-item"><span class="partner-icon">🎓</span> 清华大学电机系</div>
+                    <div class="partner-item"><span class="partner-icon">🏫</span> 浙江大学</div>
+                    <div class="partner-item"><span class="partner-icon">🤖</span> 华为技术有限公司</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 团队介绍 -->
+        <section id="about" class="page-section">
+            <div class="content-header">
+                <h2 class="page-title">团队介绍</h2>
+                <div class="title-decoration"></div>
+            </div>
+            <div class="markdown-content" id="about-content"></div>
+        </section>
+
+        <!-- 研究成果 -->
+        <section id="research" class="page-section">
+            <div class="content-header">
+                <h2 class="page-title">研究成果</h2>
+                <div class="title-decoration"></div>
+            </div>
+            <div class="research-grid" id="research-content"></div>
+        </section>
+
+        <!-- 团队成员 -->
+        <section id="team" class="page-section">
+            <div class="content-header">
+                <h2 class="page-title">团队成员</h2>
+                <div class="title-decoration"></div>
+            </div>
+            <div class="team-grid" id="team-content"></div>
+        </section>
+
+        <!-- 期刊论文 -->
+        <section id="publications" class="page-section">
+            <div class="content-header">
+                <h2 class="page-title">期刊论文</h2>
+                <div class="title-decoration"></div>
+            </div>
+            <div class="publications-list" id="publications-content"></div>
+        </section>
+
+        <!-- 新闻资讯 -->
+        <section id="news" class="page-section">
+            <div class="content-header">
+                <h2 class="page-title">新闻资讯</h2>
+                <div class="title-decoration"></div>
+            </div>
+            <div class="news-grid" id="news-content"></div>
+        </section>
+
+        <!-- 联系我们 -->
+        <section id="contact" class="page-section">
+            <div class="content-header">
+                <h2 class="page-title">联系我们</h2>
+                <div class="title-decoration"></div>
+            </div>
+            <div class="markdown-content" id="contact-content"></div>
+        </section>
+
+        <!-- 文章详情页面 -->
+        <section id="article" class="page-section">
+            <div class="article-header">
+                <a href="#" class="back-link" id="article-back">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    返回
+                </a>
+            </div>
+            <article class="article-content markdown-content" id="article-content"></article>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="footer-title">电力数据智能分析与可视化团队</h4>
+                <p class="footer-desc">专注于电力大数据分析与可视化技术创新</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">快速链接</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">团队介绍</a></li>
+                    <li><a href="#research">研究成果</a></li>
+                    <li><a href="#publications">期刊论文</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">联系方式</h4>
+                <ul class="footer-contact">
+                    <li>📧 sweezin@qq.com</li>
+                    <li>📍 上海电力大学 人工智能学部</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 电力数据智能分析与可视化团队. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 加载 marked.js 用于 Markdown 渲染 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- 可选：使用自动生成的内容索引 -->
+    <!-- 如果运行了 python scripts/generate_index.py，取消下面这行的注释 -->
+    <!-- <script src="js/content-index.js"></script> -->
+
+    <script src="js/app.js"></script>
+</body>
+</html>
