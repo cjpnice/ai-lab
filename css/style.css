@@ -860,6 +860,11 @@ body {
     font-size: 0.95rem;
     color: var(--color-text-secondary);
     line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ===================================
@@ -1342,6 +1347,11 @@ body {
     line-height: 1.6;
     margin-bottom: 1.5rem;
     flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .research-card-meta {
@@ -1523,6 +1533,11 @@ body {
     font-size: 0.95rem;
     color: var(--color-text-secondary);
     line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ===================================
@@ -1960,6 +1975,11 @@ body {
         font-size: 0.85rem;
         line-height: 1.6;
         color: var(--color-text-secondary);
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     /* 首页新闻 */
@@ -2106,6 +2126,11 @@ body {
 
     .news-card-excerpt {
         font-size: 0.85rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     /* 文章详情 */
@@ -2366,4 +2391,25 @@ body {
     .tech-item:active {
         transform: scale(0.99);
     }
+}
+
+/* ===================================
+   KaTeX 数学公式样式
+   =================================== */
+.markdown-content .katex-display {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    padding: 1rem;
+}
+
+.markdown-content .katex {
+    font-size: 1.05em;
+}
+
+.markdown-content .katex-display > .katex {
+    text-align: center;
+}
+
+.markdown-content .katex-display .katex {
+    white-space: normal;
 }

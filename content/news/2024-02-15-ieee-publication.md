@@ -1,11 +1,3 @@
----
-title: 团队在IEEE TPWS发表最新研究成果
-excerpt: 我们的最新研究成果在电力系统领域顶级期刊IEEE Transactions on Power Systems上发表。
-date: 2024-02-15
-icon: 📰
-category: 学术成果
----
-
 # 团队在IEEE TPWS发表最新研究成果
 
 ## 喜讯

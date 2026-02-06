@@ -5,6 +5,15 @@
 const contentIndex = {
     // 研究成果索引
     research: [
+         {
+            id: 'fof',
+            file: 'research/fof.md',
+            title: 'FOF: A Fine-Grained Object Detection and Feature Extraction end-to-end Network',
+            description: 'FOF是基于YOLOV7改进的，旨在提出一种能够定位细粒度目标的同时能够提取其特征向量，解决细粒度目标定位和分类任务网络无法识别新增类别的问题以及常用两阶段算法中先定位每个目标再分别提取特征的效率问题',
+            icon: '👁️',
+            date: '2024-02',
+            category: '目标检查'
+        },
         {
             id: 'iris-security',
             file: 'research/iris-security.md',
@@ -350,6 +359,18 @@ class Router {
                 let markdown = await contentLoader.loadMarkdown(articleData.file);
                 const container = document.getElementById('article-content');
 
+                // 处理图片路径 - 将相对路径转换为绝对路径
+                // 获取文章所在的目录
+                const fileDir = articleData.file.substring(0, articleData.file.lastIndexOf('/'));
+                // 替换 markdown 中的图片路径
+                markdown = markdown.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
+                    // 如果路径不是绝对路径（不以 / 或 http 开头），则添加 content 前缀
+                    if (!src.startsWith('/') && !src.startsWith('http')) {
+                        return `![${alt}](/content/${fileDir}/${src})`;
+                    }
+                    return match;
+                });
+
                 // 从 markdown 中提取标题（如果存在）
                 let title = articleData.title;
                 let date = articleData.date;
@@ -378,6 +399,18 @@ ${markdown}`;
 
                 if (container && window.marked) {
                     container.innerHTML = window.marked.parse(articleWithMeta);
+                    // 渲染数学公式
+                    if (window.renderMathInElement) {
+                        renderMathInElement(container, {
+                            delimiters: [
+                                {left: '$$', right: '$$', display: true},
+                                {left: '$', right: '$', display: false},
+                                {left: '\\[', right: '\\]', display: true},
+                                {left: '\\(', right: '\\)', display: false}
+                            ],
+                            throwOnError: false
+                        });
+                    }
                 }
             } catch (error) {
                 console.error('Error loading article:', error);
@@ -556,6 +589,18 @@ class UIController {
         const container = document.getElementById(containerId);
         if (container && window.marked) {
             container.innerHTML = window.marked.parse(markdown);
+            // 渲染数学公式
+            if (window.renderMathInElement) {
+                renderMathInElement(container, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\[', right: '\\]', display: true},
+                        {left: '\\(', right: '\\)', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
         }
     }
 }
@@ -595,7 +640,14 @@ router.register('home', () => {
 // 团队介绍
 router.register('about', async () => {
     ui.showLoading('about-content');
-    const markdown = await contentLoader.loadMarkdown('about.md');
+    let markdown = await contentLoader.loadMarkdown('about.md');
+    // 处理图片路径 - 将相对路径转换为绝对路径
+    markdown = markdown.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
+        if (!src.startsWith('/') && !src.startsWith('http')) {
+            return `![${alt}](/content/${src})`;
+        }
+        return match;
+    });
     ui.renderMarkdown(markdown, 'about-content');
 });
 
@@ -705,7 +757,14 @@ router.register('news', () => {
 // 联系我们
 router.register('contact', async () => {
     ui.showLoading('contact-content');
-    const markdown = await contentLoader.loadMarkdown('contact.md');
+    let markdown = await contentLoader.loadMarkdown('contact.md');
+    // 处理图片路径 - 将相对路径转换为绝对路径
+    markdown = markdown.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
+        if (!src.startsWith('/') && !src.startsWith('http')) {
+            return `![${alt}](/content/${src})`;
+        }
+        return match;
+    });
     ui.renderMarkdown(markdown, 'contact-content');
 });
 
